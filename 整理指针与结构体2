@@ -1,0 +1,75 @@
+//结构体用来描述复杂对象。由自己定义。类似自定义函数？
+//struct ---结构体关键字。
+
+//（1）结构体的基本结构：
+//例如形容李倩：性别，身高。
+//		struct LiQian						  //关键字struct+结构体名字
+//		{
+//			 char gender[1];//女             //要注意，结构体需要//，//后写入设定的数据。不是注释。
+//			 short height;//160
+//		 };									 //;一定要写，表示这个结构体定义结束。
+
+//（2）结构体使用：
+
+//可以利用结构体类型创建一个结构体变量。
+//格式为struct LiQian xifu={"女"，160};      //结构体定义+结构体变量名称={内容}；
+
+//输出结构体内容需要用到两个操作符，一个是.（点），一个是->。
+//1）.的使用方法有两种，
+//一种是 输出对象.+结构体内部定义的变量。如xifu.gender。
+
+//另外一种在使用该用法前，要定义一个指针变量存储结构体变量的地址。如 struct LiQian* laopo=&xifu。(数据类型*指针变量名称=&+名字)
+//格式为  （解引用操作符+存储对象） . 结构体内部定义的变量。如（*gh）.gender。
+
+
+
+//2)->de 使用比较直接
+//使用该用法时，要定义一个指针变量存储结构体变量的地址。如 struct LiQian* laopo=&xifu。(数据类型*指针变量名称=&+名字)
+//格式为 指针变量->结构体内部定义的变量。如 laopo->gender。
+
+//char字符串 输出时用%s。
+
+//修改结构体内内容的数据：
+// 变量可以直接用 xifu.height=新的值。   
+
+
+// 数组需要用到关键字strcpy--string copy字符串拷贝。用法：strcpy(xifu.gender,"女生")；
+//又因为strcpy时库函数，所以需要引用别的头文件，它的头文件--string.h。
+
+
+//例如形容李倩：性别，身高。
+
+#include <stdio.h>
+#include <string.h>
+
+struct LiQian
+{
+	char gender[20];//女
+	short height;//160
+};
+
+int main()
+{
+	struct LiQian xifu = { "女",160 };
+
+
+	printf("性别为%s\n", xifu.gender);          //.的第一种用法
+	printf("身高为%d\n", xifu.height);
+
+	struct LiQian* xixi = &xifu;
+	printf("性别为%s\n", (*xixi).gender);          //.的第二种用法
+	printf("身高为%d\n", (*xixi).height);
+
+
+	printf("性别为%s\n", xixi->gender);          //->的用法
+	printf("身高为%d\n", xixi->height);
+
+	xifu.height = 165;							//修改结构体里变量与数组的数据。
+	strcpy(xifu.gender, "女生"); 
+	printf("性别为%s\n", xifu.gender);           
+	printf("身高为%d\n", xifu.height);
+
+
+	return 0;
+}
+
