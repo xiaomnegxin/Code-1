@@ -156,3 +156,51 @@ int main()
 	}	
 	return 0;
 }
+
+
+
+
+
+
+
+//switch
+//switch内的case从上往下执行，所以需要加上break跳出块。同时根据case的需求，可以看情况简写。
+
+//结构为：
+//switch（整形表达式）
+//{
+//	语句项（case+整形常量表达式：
+//			语句；
+//			break；）
+//
+//}
+
+//例1：一个星期七天，要求1到5是工作日，6到7是休息日。
+
+#include <stdio.h>
+
+int main()
+{
+	int day = 0;
+	scanf("%d", &day);
+
+	switch (day)
+	{
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+			printf("工作日\n");
+			break;
+		case 6:
+		case 7:
+			printf("休息日\n");
+			break;
+		default:
+			printf("输入错误\n");
+			break;
+	}
+
+	return 0;
+}
